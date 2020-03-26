@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  web_app:
+    build:
+      context: './'
+      dockerfile: './docker/app/Dockerfile'
+
+
+    depends_on:
+      - mongo_database
+    links:
+      - mongo_database
+    ports:
+      - "80:5000"
+
+  mongo_database:
+    image: 'mongo:3.6.17-xenial'
+
+
+    
